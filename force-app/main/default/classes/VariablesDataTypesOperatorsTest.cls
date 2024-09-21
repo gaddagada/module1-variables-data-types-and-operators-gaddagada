@@ -2,7 +2,7 @@
 * The VariablesDataTypesOperatorsTest class is used to test the methods in the VariablesDataTypesOperators class.
 * It contains individual test methods for each method in the class, validating their functionality and expected outcomes.
 * The test methods utilize the Salesforce Assert class to assert and validate the results.
- * The main purpose of this test class is to ensure the accuracy and correctness of the methods in the VariablesDataTypesOperators class.
+* The main purpose of this test class is to ensure the accuracy and correctness of the methods in the VariablesDataTypesOperators class.
 */
 
 @IsTest
