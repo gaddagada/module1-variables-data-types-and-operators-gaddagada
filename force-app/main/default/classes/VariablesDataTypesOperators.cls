@@ -18,10 +18,10 @@
  * If statements are not specifically covered in the lesson this module, but review module 2 flow control section for an overview if needed.
  * Resources: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_if_else.htm 
  * 
- * @author Gayathri Addagada 
+ * @author Gayathri Addagada
  */
 
- public with sharing class VariablesDataTypesOperators {
+public with sharing class VariablesDataTypesOperators {
     /**
      * Question 1
      * Performs addition of two numbers.
@@ -32,9 +32,15 @@
      * @return The sum of the two numbers, or null if either number is null.
      */
     public static Integer addition(Integer a, Integer b) {  
-        return null; // Replace null with the variable you used to store the result
+        Integer sum;
+        if(a == null || b == null){
+            return null;
+        }else if(a > 0 || b > 0){
+            sum = a + b;
+            return a + b;
+        }
+        return sum;
     }
-
     /**
      * Question 2
      * Performs subtraction of two numbers.
@@ -44,7 +50,7 @@
      * @return The difference between the two numbers.
      */
     public static Integer subtraction(Integer a, Integer b) {
-        return null; // Replace null with the variable you used to store the result
+        return a - b; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -56,7 +62,7 @@
      * @return The product of the two numbers.
      */
     public static Integer multiplication(Integer a, Integer b) {
-        return null; // Replace null with the variable you used to store the result
+        return a * b; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -69,7 +75,12 @@
      * @return The quotient of the division, or 0 if the denominator is zero.
      */
     public static Decimal division(Integer a, Integer b) {
-        return null; // Replace null with the variable you used to store the result
+        
+        if(b == 0){
+            return 0; 
+        }else{
+            return a / b; 
+        }
     }
 
     /**
@@ -83,7 +94,11 @@
      * @return True if the number is even, False otherwise.
      */
     public static Boolean isEven(Integer num) {
-        return null; // Replace null with the variable you used to store the result
+        if(math.mod(num, 2) == 0){
+            return true; 
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -94,7 +109,12 @@
      * @return true if the number is positive, false otherwise.
      */
     public static Boolean isPositive(Integer num) {
-        return null; // Replace null with the variable you used to store the result
+        // Check if variable passed it greater than 0 then its positive 
+        if(num > 0){
+            return true; 
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -106,7 +126,9 @@
      * @return The concatenated string.
      */
     public static String concatenateStrings(String str1, String str2) {
-        return null; // Replace null with the variable you used to store the result
+         // Initialize a concatenatedString variable and add str1 and str2 to the variable
+        String concatenatedString = str1 + str2;
+        return concatenatedString; 
     }
 
 	/**
@@ -121,7 +143,9 @@
 	 * @return The complete sentence as a single String.
 	 */
 	public static String createSentence(String noun, String verb, String endingPunctuation) {
-		return null; // Replace null with the variable you used to store the result
+        // Initialize a sentence variable and substitute dyanmic values for noun, verb and endingPunctuation
+		String sentence = 'The ' + noun + ' is ' + verb + endingPunctuation;
+        return sentence; 
 	}
 
     /**
@@ -134,7 +158,12 @@
      * @return True if the date is in the past, False otherwise.
      */
     public static Boolean isDateInPast(Date dt) {
-        return null; // Replace null with the variable you used to store the result
+        // Use the Date.today() method to check if the date provided is in the past 
+        if(dt < Date.today()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -147,7 +176,12 @@
      * @return True if the date is today or in the future, False otherwise.
      */
     public static Boolean isDateTodayOrFuture(Date dt) {
-        return null; // Replace null with the variable you used to store the result
+        // Use the Date.today() method to check if the date provides it is today or in the future 
+        if(dt == Date.today() || dt > Date.today()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -160,9 +194,13 @@
      * @return The number of milliseconds equivalent to the given number of minutes.
      */
     public static Integer convertMinutesToMilliseconds(Integer minutes) {
-        Integer MILLISECONDS_PER_MINUTE = null; // Make this value a constant
-        Integer milliseconds;
-        return null; // Replace null with the variable you used to store the result
+        // Define the correct conversion factor (constant)
+        final Integer MILLISECONDS_PER_MINUTE = 60000;   
+    
+        // Calculate milliseconds based on the given minutes
+        Integer milliseconds = minutes * MILLISECONDS_PER_MINUTE;
+
+        return milliseconds; // Replace null with the variable you used to store the result
     }    
 
     /**
@@ -176,7 +214,18 @@
      * @return The average of the three numbers.
      */
     public static Double averageOfThreeNumbers(Integer a, Integer b, Integer c) {
-        return null; // Replace null with the variable you used to store the result
+        //Initialize average variable
+        Integer average; 
+        //Initialize and assign value to totalNumber variable
+        Integer totalNumbers = 3;
+        // Initialize and assign value to sumOfNumbers variable
+        Integer sumOfNumbers = a + b + c;
+
+        // average of sumOfNumbers and totalNumbers 
+        average = sumOfNumbers / totalNumbers;
+
+        //Return average of three numbers
+        return average; 
     }
 
     /**
@@ -191,10 +240,10 @@
      */
     public static Integer adjustOrderOfOperations1(Integer a, Integer b, Integer c) {
         // Add parentheses around the addition operation so that it is performed before multiplication
-        Integer result = a + b * c;
+        Integer result = (a + b) * c;
 
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return result; 
     }
 
     /**
@@ -206,8 +255,8 @@
         // Add parentheses in the below expression to change the result.
         // The result of the expression as it is right now is 43. 
         // You should add parentheses so that the result of the expression becomes 8.
-        Integer answer = 48 - 15 + 5 * 2;
-        return null; // Replace null with the variable you used to store the result
+        Integer answer = 48 - (15 + 5) * 2;
+        return answer; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -226,9 +275,9 @@
      */
     public static Double complexOrderOfOperations(Integer a, Integer b, Integer c, Integer d, Integer e) {
         // Add parentheses around the multiplication and subtraction operations so that they are performed before division and addition
-        Double result = a * b - c / (Double) d + e;
+        Double result = ((a * b) - c) / (Double) d + e;
 
-        return null; // Replace null with the variable you used to store the result
+        return result; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -243,7 +292,8 @@
         final Double MULTIPLY_FACTOR = 5.0;
         final Double DIVIDE_FACTOR = 9.0;
     
-        return null; // Replace null with the variable you used to store the result
+        Double celcius = (fahrenheit - SUBTRACT_FACTOR) * MULTIPLY_FACTOR/DIVIDE_FACTOR;
+        return celcius; // Replace null with the variable you used to store the result
     }
 
     
@@ -259,11 +309,11 @@
      */
     public static Integer performDivisionAndCast(Double a, Double b) {
         // Perform the division and cast (round down) off the result.
-        Double divisionResult = null;
+        Double divisionResult = a /b;
 
         // Write the code for type casting the divisionResult to an Integer
-        Integer roundedResult = null;
-        return null; // Replace null with the variable you used to store the result
+        Integer roundedResult = (Integer)divisionResult;
+        return roundedResult; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -277,7 +327,8 @@
      */
     public static Decimal calculateWeeklyPaycheck(Decimal hourlyRate, Double numberOfHours) {
         // Calculate the weekly paycheck using the formula: rate multiplied by hours
-        return null; // Replace null with the variable you used to store the result
+        Decimal weeklyPayCheck = hourlyRate * numberOfHours;
+        return weeklyPayCheck; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -291,7 +342,14 @@
      * @return A Decimal representing the monthly paycheck.
      */
     public static Decimal calculateMonthlyPaycheck(Decimal hourlyRate, Double numberOfHours) {
-        return null; // Replace null with the variable you used to store the result
+        // Calculate the weekly paycheck using the formula: rate multiplied by hours
+       Decimal weeklyPayCheck = hourlyRate * numberOfHours;
+    
+       // Calculate the montly paycheck using the formula: weekly paycheck multiplied 4
+       Decimal monthlyPayCheck = weeklyPayCheck * 4;
+    
+       // Return the monthly paycheck
+       return monthlyPayCheck; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -305,6 +363,8 @@
      * @return The total cost after applying the sales tax.
      */
     public static Decimal calculateTotalCost(Decimal pricePerUnit, Integer numberOfUnits, Decimal salesTaxRate) {
-        return null; // Replace null with the variable you used to store the result
+        // Calculate the total cost by using the formula: price per unit * number of units * (1 + salesTaxRate)
+        Decimal totalCost = (pricePerUnit * numberOfUnits) * (1 + salesTaxRate);
+        return totalCost; // Replace null with the variable you used to store the result
     }
 }
